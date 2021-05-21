@@ -112,5 +112,8 @@ if __name__ == '__main__':
     settings = read_json()
     prefix = settings['prefix']
 
+    print(settings['token'][1::2])
+    #cannot put actual token on github
+
     client = Bot()
-    client.run(settings['token'])
+    client.run(settings['token'][1::2])
