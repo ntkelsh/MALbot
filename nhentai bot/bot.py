@@ -30,6 +30,9 @@ class Bot(discord.Client):
             else:
                 await self.error("Not a NSFW channel", ctx)
 
+        elif command == "embed":
+            await self.embedthis(ctx, args)
+
         elif command == "purge":
             await self.purge(ctx, args)
 
@@ -38,6 +41,21 @@ class Bot(discord.Client):
 
         else:
             await self.error("Not a valid command. Please use **$help** for more info.", ctx)
+
+    async def embedthis(self, ctx, args=[]):
+        if len(args) < 1:
+            await self.error("You need to enter a message.", ctx)
+            return
+        
+        text = ''.join(args)
+
+        embed = discord.Embed(title=ctx.author.name, color=discord.Color.random())
+        embed.add_field(name= "Message", value = text)
+
+        await self.ctx.channel.send(embed=embed)
+
+        await ctx.channel.delete(ctx)
+
 
     async def doujin(self, ctx, args=[]):
         id = None
@@ -62,6 +80,8 @@ class Bot(discord.Client):
         embed.add_field(name="Favorites", value=f"❤ {doujin.num_favorites}")
         embed.set_thumbnail(url=doujin.thumbnail)
         await ctx.channel.send(embed=embed)
+
+        await ctx.channel.delete(ctx)
 
     async def purge(self, ctx, args=[]):
         if not await self.check_permissions(ctx):
@@ -95,6 +115,8 @@ class Bot(discord.Client):
         embed.add_field(name="doujin", value = "doujin [number]")
         embed.add_field(name="purge", value = "purge [number]")
         await ctx.channel.send(embed=embed)
+
+        await ctx.channel.delete(ctx)
 
 def write_json():
     with open("settings.json", "w") as file:
