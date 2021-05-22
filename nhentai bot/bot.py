@@ -49,7 +49,7 @@ class Bot(discord.Client):
             await self.error("You need to enter a message.", ctx)
             return
         
-        text = ''.join(args)
+        text = ' '.join(args)
 
         embed = discord.Embed(title=ctx.author.name, color=discord.Color.random())
         embed.add_field(name= "Message", value = text)
