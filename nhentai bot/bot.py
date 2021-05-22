@@ -42,6 +42,8 @@ class Bot(discord.Client):
         else:
             await self.error("Not a valid command. Please use **$help** for more info.", ctx)
 
+        await ctx.delete()
+
     async def embedthis(self, ctx, args=[]):
         if len(args) < 1:
             await self.error("You need to enter a message.", ctx)
@@ -53,9 +55,6 @@ class Bot(discord.Client):
         embed.add_field(name= "Message", value = text)
 
         await ctx.channel.send(embed=embed)
-
-        await ctx.delete(ctx)
-
 
     async def doujin(self, ctx, args=[]):
         id = None
@@ -80,8 +79,6 @@ class Bot(discord.Client):
         embed.add_field(name="Favorites", value=f"❤ {doujin.num_favorites}")
         embed.set_thumbnail(url=doujin.thumbnail)
         await ctx.channel.send(embed=embed)
-
-        await ctx.delete()
 
     async def purge(self, ctx, args=[]):
         if not await self.check_permissions(ctx):
@@ -116,8 +113,6 @@ class Bot(discord.Client):
         embed.add_field(name="purge", value = "purge [number]")
         embed.add_field(name="embed", value = "embed [message]")
         await ctx.channel.send(embed=embed)
-
-        await ctx.delete()
 
 def write_json():
     with open("settings.json", "w") as file:
