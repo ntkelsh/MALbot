@@ -54,7 +54,7 @@ class Bot(discord.Client):
 
         await ctx.channel.send(embed=embed)
 
-        await ctx.channel.delete(ctx)
+        await ctx.delete(ctx)
 
 
     async def doujin(self, ctx, args=[]):
@@ -81,7 +81,7 @@ class Bot(discord.Client):
         embed.set_thumbnail(url=doujin.thumbnail)
         await ctx.channel.send(embed=embed)
 
-        await ctx.channel.delete()
+        await ctx.delete()
 
     async def purge(self, ctx, args=[]):
         if not await self.check_permissions(ctx):
@@ -114,9 +114,10 @@ class Bot(discord.Client):
         embed = discord.Embed(title="Commands:", color = discord.Color.orange())
         embed.add_field(name="doujin", value = "doujin [number]")
         embed.add_field(name="purge", value = "purge [number]")
+        embed.add_field(name="embed", value = "embed [message]")
         await ctx.channel.send(embed=embed)
 
-        await ctx.channel.delete()
+        await ctx.delete()
 
 def write_json():
     with open("settings.json", "w") as file:
