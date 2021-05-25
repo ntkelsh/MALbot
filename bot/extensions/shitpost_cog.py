@@ -15,8 +15,9 @@ class Shitpost(commands.Cog):
         if len(message.embeds) > 0:
             for e in message.embeds:
                 if "shitpost" in e.title.lower():
-                    print("shitpost status video found")
-                    await message.delete()
-                    return
+                    if (message.channel.id != 845469773806305290):
+                        print("shitpost status video found in wrong chat")
+                        await message.delete()
+                        return
 
             

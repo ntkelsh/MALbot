@@ -19,6 +19,7 @@ class Embed(commands.Cog):
         
         text = ' '.join(args)
 
+        # the * unpacks a tuple into function arguments
         embed = discord.Embed(title=ctx.author.name, color=discord.Colour.from_rgb(*rgb_random()))
         embed.add_field(name= "Message", value = text)
 

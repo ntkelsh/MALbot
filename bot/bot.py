@@ -5,44 +5,6 @@ import os
 import sys
 
 """class Bot(discord.Client):
-    async def on_ready(self):
-        print(f'Logged in as {self.user}')
-        print('------------------------------------------')
-
-    async def on_message(self, message):
-
-        if message.author == client.user:
-            return
-
-        if message.content.startswith(prefix):
-            print('Parsing command')
-            await self.parse_command(message.content, message)
-
-    async def parse_command(self, message: str, ctx):
-        message = message[len(prefix):]
-        contents = message.split(' ')
-        command = contents[0]
-        args = contents[1:]
-
-        if command == "doujin":
-            if ctx.channel.is_nsfw():
-                await self.doujin(ctx, args)
-            else:
-                await self.error("Not a NSFW channel", ctx)
-
-        elif command == "embed":
-            await self.embedthis(ctx, args)
-
-        elif command == "purge":
-            await self.purge(ctx, args)
-
-        elif command == "help":
-            await self.help(ctx)
-
-        else:
-            await self.error("Not a valid command. Please use **$help** for more info.", ctx)
-
-        await ctx.delete()
 
     async def purge(self, ctx, args=[]):
         if not await self.check_permissions(ctx):
