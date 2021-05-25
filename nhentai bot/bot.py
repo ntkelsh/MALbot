@@ -1,10 +1,10 @@
 import discord
+from discord.ext import commands
 import json
 import os
 import sys
-from hentai import Hentai, Utils, Format
 
-class Bot(discord.Client):
+"""class Bot(discord.Client):
     async def on_ready(self):
         print(f'Logged in as {self.user}')
         print('------------------------------------------')
@@ -56,30 +56,6 @@ class Bot(discord.Client):
 
         await ctx.channel.send(embed=embed)
 
-    async def doujin(self, ctx, args=[]):
-        id = None
-
-        if len(args) > 1:
-            await self.error("Wrong number of arguments.", ctx)
-            return
-
-        if len(args) == 1:
-            if not Hentai.exists(int(args[0])):
-                await self.error("Not a valid number.", ctx)
-                return
-            id = args[0]
-
-        if len(args) < 1:
-            id = Utils.get_random_id()
-
-        doujin = Hentai(id)
-
-        embed = discord.Embed(title=doujin.title(Format.Pretty), color=discord.Color.green())
-        embed.add_field(name="Start Reading", value=doujin.url)
-        embed.add_field(name="Favorites", value=f"❤ {doujin.num_favorites}")
-        embed.set_thumbnail(url=doujin.thumbnail)
-        await ctx.channel.send(embed=embed)
-
     async def purge(self, ctx, args=[]):
         if not await self.check_permissions(ctx):
             return
@@ -112,7 +88,7 @@ class Bot(discord.Client):
         embed.add_field(name="doujin", value = "doujin [number]")
         embed.add_field(name="purge", value = "purge [number]")
         embed.add_field(name="embed", value = "embed [message]")
-        await ctx.channel.send(embed=embed)
+        await ctx.channel.send(embed=embed)"""
 
 def write_json():
     with open("settings.json", "w") as file:
@@ -130,8 +106,16 @@ if __name__ == '__main__':
     settings = read_json()
     prefix = settings['prefix']
 
-    print(settings['token'][1::2])
+    #print(settings['token'][1::2])
     #cannot put actual token on github
 
-    client = Bot()
-    client.run(settings['token'][1::2])
+    bot = commands.Bot(command_prefix=prefix)
+
+    extensions = [
+        "extensions.hentai_cog"
+    ]
+
+    for e in extensions:
+        bot.load_extension(e)
+
+    bot.run(settings['token'][1::2])
