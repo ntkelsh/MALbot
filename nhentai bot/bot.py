@@ -44,18 +44,6 @@ import sys
 
         await ctx.delete()
 
-    async def embedthis(self, ctx, args=[]):
-        if len(args) < 1:
-            await self.error("You need to enter a message.", ctx)
-            return
-        
-        text = ' '.join(args)
-
-        embed = discord.Embed(title=ctx.author.name, color=discord.Color.random())
-        embed.add_field(name= "Message", value = text)
-
-        await ctx.channel.send(embed=embed)
-
     async def purge(self, ctx, args=[]):
         if not await self.check_permissions(ctx):
             return
@@ -74,10 +62,6 @@ import sys
                 return True
         await self.error("Invalid permissions to use that command.", ctx)
         return False
-
-    async def error(self, message: str, ctx):
-        embed = discord.Embed(title=message, color = discord.Color.red())
-        await ctx.channel.send(embed=embed)
 
     async def success(self, ctx):
         embed = discord.Embed(title="Success!", color = discord.Color.blue())
@@ -112,7 +96,8 @@ if __name__ == '__main__':
     bot = commands.Bot(command_prefix=prefix)
 
     extensions = [
-        "extensions.hentai_cog"
+        "extensions.hentai_cog",
+        "extensions.embed_cog"
     ]
 
     for e in extensions:
