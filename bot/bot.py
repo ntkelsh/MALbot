@@ -97,7 +97,9 @@ if __name__ == '__main__':
 
     extensions = [
         "extensions.hentai_cog",
-        "extensions.embed_cog"
+        "extensions.shitpost_cog",
+        "extensions.embed_cog",
+        "extensions.ready_cog",
     ]
 
     for e in extensions:
