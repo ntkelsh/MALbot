@@ -19,16 +19,20 @@ class Shitpost(commands.Cog):
     async def on_message(self, message):
         words = message.content.split(" ")
 
-        youtube_str = "https://www.youtube.com/watch?v="
+        watch_str = "https://www.youtube.com/watch?v="
+        embed_str = "https://www.youtube.com/embed/"
 
         url = None
         for w in words:
-            if w.find(youtube_str) != -1:
-                index = w.index(youtube_str)
-                url = w[index:index + len(youtube_str) + 11] # this is in case words letters are before or after the link
+            if w.find(watch_str) != -1:
+                index = w.index(watch_str)
+                url = w[index:index + len(watch_str) + 11] # this is in case words letters are before or after the link
+            elif w.find(embed_str) != -1:
+                index = w.index(embed_str)
+                url = w[index:index + len(embed_str) + 11]
 
         if url is not None:
-            video_id = url.replace("https://www.youtube.com/watch?v=", "")
+            video_id = url.replace(watch_str, "").replace(embed_str, "")
 
             video = api.get_video_by_id(video_id=video_id)
 
