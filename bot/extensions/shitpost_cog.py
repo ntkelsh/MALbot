@@ -17,7 +17,6 @@ class Shitpost(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        #if the message contains any embeds
         words = message.content.split(" ")
 
         youtube_str = "https://www.youtube.com/watch?v="
