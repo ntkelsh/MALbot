@@ -3,6 +3,7 @@ from discord.ext import commands
 import json
 import os
 import sys
+from extensions.utils import write_json, read_json, restart
 
 """class Bot(discord.Client):
 
@@ -35,17 +36,6 @@ import sys
         embed.add_field(name="purge", value = "purge [number]")
         embed.add_field(name="embed", value = "embed [message]")
         await ctx.channel.send(embed=embed)"""
-
-def write_json():
-    with open("settings.json", "w") as file:
-        json.dump(settings, file)
-
-def read_json() -> {}:
-    with open("settings.json", "r") as file:
-        return json.load(file)
-
-def restart():
-        os.execv(__file__, sys.argv)
 
 
 if __name__ == '__main__':
