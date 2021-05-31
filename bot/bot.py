@@ -47,7 +47,7 @@ if __name__ == '__main__':
         "extensions.hentai_cog",
         "extensions.shitpost_cog",
         "extensions.embed_cog",
-        "extensions.purge_cog",
+        #"extensions.purge_cog",
         "extensions.ready_cog",
     ]
 
