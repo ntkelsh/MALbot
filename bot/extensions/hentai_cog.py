@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from hentai import Hentai, Utils, Format
-from .utils import error
+from .utils import embed_this
 
 def setup(bot):
     bot.add_cog(Comic(bot))

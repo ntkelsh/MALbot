@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from .utils import error
+from .utils import embed_this
 import random
 
 def setup(bot):
