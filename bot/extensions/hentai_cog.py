@@ -16,18 +16,18 @@ class Comic(commands.Cog):
     async def doujin(self, ctx, *args, member: discord.Member = None):
 
         if not ctx.channel.is_nsfw():
-            await self.error("Not an NSFW channel", ctx)
+            await self.embed_this("Not an NSFW channel", ctx)
             return
 
         id = None
 
         if len(args) > 1:
-            await self.error("Wrong number of arguments.", ctx)
+            await self.embed_this("Wrong number of arguments.", ctx)
             return
 
         if len(args) == 1:
             if not Hentai.exists(int(args[0])):
-                await self.error("Not a valid number.", ctx)
+                await self.embed_this("Not a valid number.", ctx)
                 return
             id = args[0]
 

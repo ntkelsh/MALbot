@@ -1,7 +1,7 @@
 import discord
 import json
 
-async def error(self, message: str, ctx):
+async def embed_this(self, message: str, ctx, color: discord.Color = discord.Color.red()):
     embed = discord.Embed(title=message, color = discord.Color.red())
     await ctx.channel.send(embed=embed)
 

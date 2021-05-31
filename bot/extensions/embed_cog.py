@@ -14,7 +14,7 @@ class Embed(commands.Cog):
     @commands.command(name="embed")
     async def embedthis(self, ctx, *args, member: discord.Member = None):
         if len(args) < 1:
-            await self.error("You need to enter a message.", ctx)
+            await self.embed_this("You need to enter a message.", ctx)
             return
         
         text = ' '.join(args)
