@@ -17,6 +17,7 @@ if __name__ == '__main__':
         "extensions.embed_cog",
         #"extensions.purge_cog",
         "extensions.ready_cog",
+	"extensions.sleep_cog"
     ]
 
     for e in extensions:
