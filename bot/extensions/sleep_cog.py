@@ -12,7 +12,7 @@ class Sleep(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    def sleep(self, ctx, *args):
+    async def sleep(self, ctx, *args):
         async with ctx.channel.typing():
             time.sleep(5)
             return
