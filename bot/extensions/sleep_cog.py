@@ -2,6 +2,7 @@ import typing
 import discord
 from discord.ext import commands
 import time
+import asyncio
 
 def setup(bot):
     bot.add_cog(Sleep(bot))
@@ -14,5 +15,5 @@ class Sleep(commands.Cog):
     @commands.command()
     async def sleep(self, ctx, *args):
         async with ctx.channel.typing():
-            time.sleep(5)
+            asyncio.sleep(5)
             return
