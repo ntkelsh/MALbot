@@ -6,6 +6,7 @@ import asyncio
 
 def setup(bot):
     bot.add_cog(Sleep(bot))
+    print("sleep_cog loaded")
 
 class Sleep(commands.Cog):
 

@@ -16,8 +16,9 @@ if __name__ == '__main__':
         "extensions.shitpost_cog",
         "extensions.embed_cog",
         #"extensions.purge_cog",
-        "extensions.ready_cog",
-	"extensions.sleep_cog"
+        "extensions.sleep_cog",
+        "extensions.anilist_cog",
+        "extensions.ready_cog"
     ]
 
     for e in extensions:

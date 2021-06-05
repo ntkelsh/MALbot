@@ -6,8 +6,10 @@ import os
 import sys
 import json
 
-async def embed_this(message: str, ctx, color: discord.Color = discord.Color.red()):
+async def embed_this(message: str, ctx, footer: str = None, color: discord.Color = discord.Color.red()):
+    footer = footer or get_footer()
     embed = discord.Embed(title=message, color = discord.Color.red())
+    embed.set_footer(text=footer)
     await ctx.channel.send(embed=embed)
 
 def write_json():
