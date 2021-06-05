@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
-from .utils import embed_this
-import random
+from .utils import embed_this, get_footer, random_color
 
 def setup(bot):
     bot.add_cog(Embed(bot))
@@ -12,22 +11,23 @@ class Embed(commands.Cog):
         self.bot = bot
 
     @commands.command(name="embed")
-    async def embedthis(self, ctx, *args, member: discord.Member = None):
+    async def embedthis(self, ctx, *args, member: discord.Member = None, title: str = None, footer: str = None):
+
+        member = member or ctx.author
+        footer = footer or get_footer()
+
         if len(args) < 1:
             await self.embed_this("You need to enter a message.", ctx)
             return
         
         text = ' '.join(args)
 
-        # the * unpacks a tuple into function arguments
-        embed = discord.Embed(title=ctx.author.name, color=discord.Colour.from_rgb(*rgb_random()))
+        embed = discord.Embed(color=random_color())
+        embed.set_author(name=member.name, icon_url=member.avatar_url)
+        
         embed.add_field(name= "Message", value = text)
+
+        embed.set_footer(text=footer)
 
         await ctx.channel.send(embed=embed)
         await ctx.message.delete()
-
-def rgb_random() -> ():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    return (r, g, b)
