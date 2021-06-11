@@ -15,9 +15,10 @@ if __name__ == '__main__':
         "extensions.hentai_cog",
         "extensions.shitpost_cog",
         "extensions.embed_cog",
-        #"extensions.purge_cog",
         "extensions.sleep_cog",
-        "extensions.anilist_cog",
+        "extensions.anilist.anilist_cog",
+        "extensions.anilist.anime_cog",
+        "extensions.anilist.manga_cog",
         "extensions.ready_cog"
     ]
 
