@@ -77,12 +77,7 @@ class Manga(commands.Cog):
         if 'errors' in json_data:
             await embed_this(json_data['errors'][0]['message'], ctx)
         else:
-            pages = characters(json_data)
-            pages.insert(0, info(json_data))
-
-            print(pages)
-            await multi_embed(pages, ctx)
-
+            await ctx.send(info(json_data))
 
 # the first page containing name, description, score, favorites
 def info(json_data) -> discord.Embed:
