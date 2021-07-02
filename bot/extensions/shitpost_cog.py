@@ -19,12 +19,6 @@ class Shitpost(commands.Cog):
     async def on_message(self, message):
         words = message.content.split(" ")
 
-        mobile_str = "https://m.youtube.com/watch?v="
-        watch_str = "https://www.youtube.com/watch?v="
-        embed_str = "https://www.youtube.com/embed/"
-        short_str = "https://youtu.be/"
-        y2u_str = "http://y2u.be/"
-
         link_prefixes = [
             "http://m.youtube.com/watch?v=",
             "https://m.youtube.com/watch?v=",
@@ -46,26 +40,6 @@ class Shitpost(commands.Cog):
                 if w.find(l) != -1:
                     index = w.index(l)
                     url = w[index + len(l): index + len(l) + 11]
-
-            """if w.find(watch_str) != -1:
-                index = w.index(watch_str)
-                url = w[index:index + len(watch_str) + 11] # this is in case words letters are before or after the link
-            
-            elif w.find(embed_str) != -1:
-                index = w.index(embed_str)
-                url = w[index:index + len(embed_str) + 11]
-            
-            elif w.find(short_str) != -1:
-                index = w.index(short_str)
-                url = w[index:index + len(short_str) + 11]
-
-            elif w.find(y2u_str) != -1:
-                index = w.index(y2u_str)
-                url = w[index:index + len(y2u_str) + 11]
-
-            elif w.find(mobile_str) != -1:
-                index = w.index(mobile_str)
-                url = w[index:index + len(mobile_str) + 11]"""
 
         if url is not None:
             video_id = url
