@@ -29,7 +29,7 @@ def restart():
 
 def get_time() -> str:
     pacific = pytz.timezone('US/Pacific')
-    datetime_pacific = datetime.noew(pacific)
+    datetime_pacific = datetime.now(pacific)
     return datetime_pacific.strftime("%I:%M %p")
 
 def get_footer() -> str:
