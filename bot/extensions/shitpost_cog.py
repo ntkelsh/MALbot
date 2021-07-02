@@ -21,15 +21,26 @@ class Shitpost(commands.Cog):
 
         watch_str = "https://www.youtube.com/watch?v="
         embed_str = "https://www.youtube.com/embed/"
+        short_str = "https://youtu.be/"
+        y2u_str = "http://y2u.be/"
 
         url = None
         for w in words:
             if w.find(watch_str) != -1:
                 index = w.index(watch_str)
                 url = w[index:index + len(watch_str) + 11] # this is in case words letters are before or after the link
+            
             elif w.find(embed_str) != -1:
                 index = w.index(embed_str)
                 url = w[index:index + len(embed_str) + 11]
+            
+            elif w.find(short_str) != -1:
+                index = w.index(short_str)
+                url = w[index:index + len(short_str) + 11]
+
+            elif w.find(y2u_str) != -1:
+                index = w.index(y2u_str)
+                url = w[index:index + len(y2u_str) + 11]
 
         if url is not None:
             video_id = url.replace(watch_str, "").replace(embed_str, "")
