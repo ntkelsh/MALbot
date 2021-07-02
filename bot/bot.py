@@ -19,7 +19,7 @@ if __name__ == '__main__':
         "extensions.anilist.anilist_cog",
         "extensions.anilist.anime_cog",
         "extensions.anilist.manga_cog",
-        "extensions.cease_cog"
+        "extensions.cease_cog",
         "extensions.ready_cog"
     ]
 
