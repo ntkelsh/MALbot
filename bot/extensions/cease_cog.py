@@ -8,9 +8,9 @@ def setup(bot):
 
 class Cease(commands.Cog):
     
-    def __init__(self, bot, cease: bool):
+    def __init__(self, bot, cease=False):
         self.bot = bot
-        self.cease = cease or False
+        self.cease = cease
 
     @commands.command(aliases = ['bully'])
     async def cease(self, ctx):
