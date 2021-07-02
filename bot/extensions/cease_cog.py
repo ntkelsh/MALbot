@@ -22,7 +22,7 @@ class Cease(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author.id == 298616928405028864:
+        if message.author.id == 191044716521848833:#298616928405028864:
             if self.cease:
                 await message.delete()
 
