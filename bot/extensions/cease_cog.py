@@ -4,6 +4,7 @@ from .utils import embed_this
 
 def setup(bot):
     bot.add_cog(Cease(bot))
+    print("cease_cog loaded")
 
 class Cease(commands.Cog):
     
