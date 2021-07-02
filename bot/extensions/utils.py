@@ -28,7 +28,7 @@ def restart():
         os.execv(__file__, sys.argv)
 
 def get_time() -> str:
-    pacific = pytz.timezone('US/Western')
+    pacific = pytz.timezone('US/Pacific')
     datetime_pacific = datetime.noew(pacific)
     return datetime_pacific.strftime("%I:%M %p")
 
