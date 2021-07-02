@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
 import json
-import time
+from datetime import datetime
+import pytz
 import random
 import os
 import sys
@@ -27,7 +28,9 @@ def restart():
         os.execv(__file__, sys.argv)
 
 def get_time() -> str:
-    return time.strftime("%I:%M %p")
+    pacific = pytz.timezone('US/Western')
+    datetime_pacific = datetime.noew(pacific)
+    return datetime_pacific.strftime("%I:%M %p")
 
 def get_footer() -> str:
     return "Today at " + get_time()
