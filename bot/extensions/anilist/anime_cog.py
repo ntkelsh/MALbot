@@ -80,7 +80,7 @@ class Anime(commands.Cog):
         if 'errors' in json_data:
             await embed_this(json_data['errors'][0]['message'], ctx)
         else:
-            await ctx.send(info(json_data))
+            await ctx.send(embed=info(json_data))
 
 def info(json_data) -> discord.Embed:
 
