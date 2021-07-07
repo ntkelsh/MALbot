@@ -10,9 +10,13 @@ import json
 import typing
 from pygicord import Paginator
 
-async def embed_this(message: str, ctx, footer: str = None, color: discord.Color = discord.Color.red()):
+async def embed_this(message: str, ctx, author: discord.Member = None,
+        footer: str = None, color: discord.Color = discord.Color.red()):
+
     footer = footer or get_footer()
-    embed = discord.Embed(title=message, color = discord.Color.red())
+    embed = discord.Embed(title=message, color=color)
+    if author:
+        embed.set_author(name=author.name, icon_url=author.avatar_url)
     embed.set_footer(text=footer)
     await ctx.channel.send(embed=embed)
 
